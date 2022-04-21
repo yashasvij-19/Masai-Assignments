@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonalds</title>
+    <style>
+        img{
+            height:300px;
+            margin-left: 40%;
+        }
+        #orderMe{
+        margin-left: 45%;
+        color:white;
+        background-color: red;
+        height: 50px;
+        width:100px;
+        }
+        #check{
+            margin-left: 43%;
+            margin-bottom: 5%;
+            font-size: larger;
+    
+        }
+
+    </style>
+</head>
+<body>
+  <div id = "number">
+  </div>
+    <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/800px-McDonald%27s_Golden_Arches.svg.png"/>
+    <br><br><br>
+    <div id = "check">
+    <input type="checkbox" id="food1">
+    <label for="food1">French Fries</label><br>
+    <input type="checkbox" id="food2">
+    <label for="food2">McAloo Tikki Burger </label><br>
+    <input type="checkbox" id="food3">
+    <label for="food3">McMaharaja Burger</label><br>
+    <input type="checkbox" id="food4">
+    <label for="food4">Vanilla Ice cream</label><br>
+    <input type="checkbox" id="food5">
+    <label for="food5">Cold drink</label><br>
+    <input type="checkbox" id="food6">
+    <label for="food6">Salsa Bean Burger</label>
+    </div>
+    <button onclick = "orderDone()" id = "orderMe">Order Food</button>
+    <div id = "invisible">
+    </div>
+    <script>
+      
+      var itemsOrdered = [];
+      var images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS2diX6RmMLXyeOkqrOJpuNzJ7ZeuESC9EZQ&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8rki43Q5JJPak4MkCx-FQRPBftAgTdf51WA&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8rki43Q5JJPak4MkCx-FQRPBftAgTdf51WA&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OTYXO1Osf48JkPLcVXueCYBWNS-w4COHBqkBvhIX2w7NA5pWymsLKMv9_C_Fgwiq3J8&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9DQ1V7FcXg1XQk_ohitk3LxEwPS_q82-1Vw&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8rki43Q5JJPak4MkCx-FQRPBftAgTdf51WA&usqp=CAU"]
+      var newImage = [];
+      var orderNumber = 100010;
+
+      function orderDone(){
+
+    let myFirstPromise = new Promise(function (resolve, reject) {
+  setTimeout(function () {
+   if(document.getElementById("food1").checked === true){
+     resolve(itemsOrdered.push("French Fries"))
+     resolve(newImage.push(images[0]))
+   }
+   if(document.getElementById("food2").checked === true){
+     resolve(itemsOrdered.push("McAloo Tikki Burger"))
+     resolve(newImage.push(images[1]))
+   }
+   if(document.getElementById("food3").checked === true){
+     resolve(itemsOrdered.push("McMaharaja Burger"))
+     resolve(newImage.push(images[2]))
+   }
+   if(document.getElementById("food4").checked === true){
+     resolve(itemsOrdered.push("Vanilla Ice cream"))
+     resolve(newImage.push(images[3]))
+   }
+   if(document.getElementById("food5").checked === true){
+     resolve(itemsOrdered.push("Cold drink"))
+     resolve(newImage.push(images[4]))
+   }
+   if(document.getElementById("food6").checked === true){
+     resolve(itemsOrdered.push("Salsa Bean Burger"))
+     resolve(newImage.push(images[5]))
+   }
+  },5000);
+});
+
+  myFirstPromise.then(function (res) {
+    var v = document.getElementById("check");
+    var x = document.getElementById("orderMe");
+    var y = document.getElementById("invisible");
+    var z = document.getElementById("number");
+   
+   
+    v.style.display = 'none';
+    x.style.display = 'none';
+    y.style.marginLeft = "35%";
+    y.style.fontFamily = 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+    y.style.fontSize = "larger";
+    z.style.float = "right";
+    z.style.fontSize = "30px";
+    z.innerHTML = "ORDER NUMBER: ";
+    z.append(orderNumber);
+
+   for(var i = 0; i<itemsOrdered.length;i++){
+    var p = document.createElement("p");
+    var img = document.createElement('img');
+     p.textContent = itemsOrdered[i];
+     img.src = newImage[i];
+     img.style.height = "150px";
+     y.append(p);
+     y.append(img);
+
+   }
+    orderNumber++ ;
+  });
+}
+
+</script>
+</body>
+</html>
