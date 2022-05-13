@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Roboto:wght@300;400;500;700&display=swap');
+
+
+* {
+margin: 0%;
+padding: 0%;
+box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.material-icons{
+    color: rgb(96, 96, 96);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 15px;
+}
+.header__left{
+    display: flex;
+    align-items: center;
+}
+.header__left svg{
+    margin-left: 15px;
+    width: 100px;
+}
+.header i {
+    padding: 0px 7px;
+    cursor:pointer;
+}
+
+#inp{
+    border:1px solid #ddd;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.header__search input{
+    width:500px;
+    padding:10px;
+    margin:0;
+    border-radius: 0;
+    border:none;
+}
+.header__search button{
+    padding: 0;
+    margin: 0;
+    height:100%;
+    border-radius: 0%;
+    border: none;
+}
+.mainBody{
+    height: calc(100vh - 70px);
+    display: flex;
+    overflow: hidden;
+}
+.sideBar{
+    height: 100%;
+    width: 230px;
+    background-color: white;
+    
+}
+.sideBar__categories{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top:15px;
+}
+.sideBar__category{
+    display:flex;
+    align-items: center;
+    padding:12px 25px;
+}
+.sideBar__category span{
+    margin-left: 15px;
+}
+.sideBar__category:hover{
+    cursor: pointer;
+    background-color: #e5e5e5;
+}
+hr{
+    height: 1px;
+    background-color: #e5e5e5 ;
+    border: none;
+}
+#videos{
+    background-color: #f9f9f9;
+    width:100%;
+    height:100%;
+    padding:15px 25px;
+    border-top: 1px solid #ddd;
+    position:absolute;
+    left:230px;
+    top:70px;
+    display: grid;
+    grid-template-columns: repeat(3,350px);
+    grid-template-rows: repeat(3,200px);
+    gap:70px;
+}
