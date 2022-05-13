@@ -81,10 +81,40 @@
        let API_KEY = "AIzaSyBBMbz6W1tMLZpYvKVQj-hqOxwQ69GEYNE";
        let videos = document.getElementById("videos");
 
-async function searchVideo(){
- let query = document.getElementById("query").value;
- let data = await fetchData(query);
+    async function fetchHome() {
+  try {
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?chart=mostPopular&maxResults=9&key=${API_KEY}`);
+    let data = await res.json();
+    let videosArr = data.items
+    displayHome(videosArr);
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+function displayHome(data) {
+    videos.innerHTML = "";
+    data.forEach((video) => {
+       const{id} = video;
+
+       let div = document.createElement("div");
+       let iframe = document.createElement("iframe");
+       iframe.src = `https://www.youtube.com/embed/${id}`;
+       iframe.style.width = "400px";
+       iframe.style.height = "250px";
+       div.append(iframe);
+       videos.append(div);
+
+    });
+}
+
+setTimeout(fetchHome(),100)
+
+async function searchVideo(){
+           let query = document.getElementById("query").value;
+           let data = await fetchData(query);
+       }
+  
 
 async function fetchData(query){
     let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${query}&type=video&part=snippet`);
