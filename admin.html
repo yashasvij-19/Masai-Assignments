@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel Dashboard</title>
+    <style>
+        .enteries{
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "enteries">
+        <form>
+            <input type="text" placeholder="Product Name" id="product_name"><br><br>
+            <input type="text" placeholder="Category" id="category"><br><br>
+            <input type="url" placeholder="Image URL" id="image"><br><br>
+            <label for="price_output">Price:</label>
+            <output id="price_output" for="price"></output><br>
+<input type="range" name="price" id="price" min="2500" max="15000" step="10" value="5000"><br><br>
+            <label for="gender">Gender:</label>
+           <select id = "gender">
+               <option value="male">Male</option>
+               <option value="female">Female</option>
+               <option value="other">Other</option>
+           </select><br><br>
+           <label for = "sold">Sold</label>
+           <input type="checkbox" id="sold">
+        </form><br>
+        <button id="add" onclick="addProduct()">Submit</button>
+    </div> 
+</body>
+<script>
+     let i = 1;
+
+let addProduct = () => {
+    localStorage.setItem("Product - " + i,[product_name.value,category.value,image.value,slider.value,gender.value,sold.checked])
+    i++ ;
+}
+
+const product = {
+name: this.name,
+category: this.category,
+image_url: this.image_url,
+price: this.price,
+gender: this.gender,
+status: this.status,
+}
+
+let slider = document.getElementById("price");
+let output = document.getElementById("price_output");
+output.innerHTML = slider.value; 
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+</html>
