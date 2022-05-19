@@ -39,7 +39,8 @@
      let i = 1;
 
 let addProduct = () => {
-    localStorage.setItem("Product - " + i,[product_name.value,category.value,image.value,slider.value,gender.value,sold.checked])
+    let productsArr = [product_name.value,category.value,image.value,slider.value,gender.value,sold.checked];
+    localStorage.setItem("Product - " + i,JSON.stringify(productsArr))
     i++ ;
 }
 
