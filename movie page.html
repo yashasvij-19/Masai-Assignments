@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        nav{
+            border: 5px solid black;
+            margin: 2% 2%;
+            height: 20px;
+            padding: 2%;
+        }
+        a{
+            float: right;
+            font-size: larger;
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: none;
+            margin: 5px;
+            color: black;
+        }
+        #slide-show{
+            position: absolute;
+            left:35%;
+            border: 10px solid rgb(63, 62, 62);
+            border-radius: 20%;
+            width: 350px;
+            height: 200px;
+            background-color: black;
+            padding:5%;
+        }
+        #imgO{
+              text-align: center;
+              width: 80%;
+              height: 100%;
+        }
+        #movie-grid{
+            position: absolute;
+            top:90%;
+            left: 10%;
+            display:grid;
+            grid-template-columns: repeat(3,350px);
+            gap:100px;
+        }
+        #sortButtons{
+            float:left;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href = "signup.html" target = "_blank">SignUp</a>
+        <a href = "login.html" target = "_blank">Login</a>
+        <a href = "index.html" target = "_blank">Home</a>
+    </nav>
+    <div id= "sortButtons">
+        <button id = "sort-hl" onclick = "sortl()">Sort by High Rating</button><br><br>
+        <button id = "sort-lh" onclick = "sorth()">Sort by Low Rating</button>
+    </div>
+    <div id = "slide-show">
+        <img src = "" id = "imgO">
+    </div>
+    <div id = "movie-grid">
+    </div>
+    <script>
+       var slideshowImgElement = document.getElementById("imgO");
+       var images = ["https://coltchronicle.org/wp-content/uploads/2020/06/1AGuIdqTVnRfTYLcEsByBFQ.jpeg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsd2oWXcGt1QZD3ke7X9-Ins_NIpHAtfb8Q&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRszl1mJIlxsfkp9IYwlGVfTmC5uB2U4slETg&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS08c-CNv5BTgJpFppBuQxQ32ddUVP-Wq12A&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJiT2CzEMGWScXjtvLM-nOzTwbTfhL0Tjsog&usqp=CAU"];
+       var j = 0;
+
+    setInterval(function () {
+    if(j === images.length) {
+      j = 0;
+    }
+    slideshowImgElement.src = images[j];
+    j = j + 1;
+  }, 3000)
+
+  var movies = [{name: "Godfather", release_year: "1972", poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxv51YJmR5rkrG7DtvAwRNoD-L9nLYqjhv9w&usqp=CAU", IMDB_rating: "10", rottenTomatoes: "97%", director: "Francis Ford Coppola"},
+                {name: "Father of the Bride", release_year:"1991",poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRarfHoJGHJlvgcVq69EXHIHISH0lS8qZf2kA&usqp=CAU",IMDB_rating: "6.5", rottenTomatoes: "70%", director: "Charles Shyer"},
+                {name: "The Proposal", release_year:"2009", poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzu2yWDPQaeMUdhE2xO3E7fofasPiK_2n_Kw&usqp=CAU",IMDB_rating: "6.7", rottenTomatoes: "45%", director: "Anne Fletcher"},
+                {name: "Inception", release_year:"2010", poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJVFD5z6uvFLYTYJtRiYUNdusNarbqA8sVnw&usqp=CAU",IMDB_rating: "8.8", rottenTomatoes: "87%", director: "Christopher Nolan"},
+                {name: "Inferno", release_year:"2016", poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0Vz9HnaVVdoG2JHHYGTZ7LPq--xF0zzPfw&usqp=CAU",IMDB_rating: "6.2", rottenTomatoes: "23%", director: "Ron Howard"},
+                {name: "Erin Brockovich", release_year:"2000", poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYFQVBf65K7TMQgGHBVX36Sr1up0EFahGIhA&usqp=CAU",IMDB_rating: "7.4", rottenTomatoes: "85%", director: "Steven Soderbergh"},
+                {name: "The Blind Side", release_year:"2009", poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq7lfU0NNlnsxLl6z2Z2eRL65MHesQYDEfAQ&usqp=CAU",IMDB_rating: "7.6", rottenTomatoes: "66%", director: "John Lee Hancock"},
+                {name: "Notting Hill", release_year:"1999", poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1ZmQKcu_YZLwbIW5ZpEtxs4SV3YlDyBOi-w&usqp=CAU",IMDB_rating: "7.1", rottenTomatoes: "83%", director: "Roger Michell"},
+                {name: "Back to the Future", release_year:"1985", poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxcvwwo27aT1_lyDd1gMhkSYXdMJF2EFbecA&usqp=CAU",IMDB_rating: "8.5", rottenTomatoes: "96%", director: "Robert Zemeckis"}]
+                
+                var divMain = document.getElementById("movie-grid");
+
+                for(var i = 0; i<9; i++){
+                    var div = document.createElement("div");
+                    var image = document.createElement("img");
+                    image.src = movies[i].poster;
+                    var p = document.createElement("p");
+                    p.textContent = "Movie:" + " " + movies[i].name;
+                    var p2 = document.createElement("p");
+                    p2.textContent = "Release Year:" + " " + movies[i].release_year;
+                    var p3 = document.createElement("p");
+                    p3.textContent = "IMDB Rating:" + " " + movies[i].IMDB_rating;
+                    var p4 = document.createElement("p");
+                    p4.textContent = "Rotten Tomatoes:" + " " + movies[i].rottenTomatoes;
+                    var p5 = document.createElement("p");
+                    p5.textContent = "Director:" + " " + movies[i].director;
+                    div.append(image);
+                    div.append(p);
+                    div.append(p2);
+                    div.append(p3);
+                    div.append(p4);
+                    div.append(p5);
+                    divMain.appendChild(div);
+                    }
+                
+</script>
+</body>
+</html>

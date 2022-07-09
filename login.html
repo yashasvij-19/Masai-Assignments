@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        nav{
+            border: 5px solid black;
+            margin: 2% 2%;
+            height: 20px;
+            padding: 2%;
+        }
+        a{
+            float: right;
+            font-size: larger;
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: none;
+            margin:5px;
+        }
+        #login-box{
+            width:150px;
+            height: 150px;
+            border: 5px solid rgb(5, 5, 80);
+            border-radius: 30%;
+            position: absolute;
+            left: 40%;
+            top: 30%;
+            padding: 5%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href = "login.html" target = "_blank">Login</a>
+        <a href = "index.html" target = "_blank">Home</a>
+        </nav>
+
+        <div id = "login-box">
+            <form id = "summit">
+                <input type = "email" placeholder = "Enter your email ID" id = "emails"><br><br>
+                <input type = "password" placeholder = "Password" id = "pass"><br><br>
+                <input type = "submit" value ="Log In">
+            </form>
+       </div>
+       <script>
+          var actions = document.getElementById("summit");
+          var correctEmail = "coopersheldon@gmail.com";
+          var correctPassword = "Password1!";
+          var mail =  document.getElementById("emails");
+          var word =  document.getElementById("pass");
+         
+          actions.addEventListener("submit",res);
+
+         function res(e){
+          e.preventDefault();
+             if(mail.value === "" || word.value === ""){
+            alert("Either or both fields are empty!");
+             }else if(mail.value !== correctEmail || word.value !== correctPassword){
+                alert("Invalid ID/Password!");
+             }else{
+               location.href = "index.html";
+             }
+         }
+        
+
+
+       </script>
+</body>
+</html>
