@@ -2,16 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel = "" href="myimage.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webpack's Assignment</title>
+    <title>Throw Dice</title>
+    <style>
+        #winner{
+         width:350px;
+         height:50px;
+         margin-left: 37%;
+         margin-top: 2%;
+         border: 1px solid black;
+         background-color: black;
+         color:white;
+         text-align: center;
+         padding: 1%;
+         font-weight: bolder;
+         font-size: xx-large;
+        }
+        #main{
+            display: flex;
+            justify-content: center;
+            margin-top: 7%;
+        }
+        #memberOne{
+         width:200px;
+         height:200px;
+         border: 1px solid black;
+         margin:15px;
+         background-color: antiquewhite;
+         color: black;
+         text-align: center;
+         padding: 1%;
+         font-weight: bolder;
+         font-size: xx-large;
+        }
+        #memberTwo{
+         width:200px;
+         height:200px;
+         border: 1px solid black;
+         margin:15px;
+         background-color: antiquewhite;
+         color: black;
+         text-align: center;
+         padding: 1%;
+         font-weight: bolder;
+         font-size: xx-large;
+        }
+        #memberThree{
+         width:200px;
+         height:200px;
+         border: 1px solid black;
+         margin:15px;
+         background-color: antiquewhite;
+         color: black;
+         text-align: center;
+         padding: 1%;
+         font-weight: bolder;
+         font-size: xx-large;
+        }
+        #roll{
+        margin-top: 2%;
+        margin-left: 45%;
+        width: 150px;
+        height: 100px;
+        }
+</style>
 </head>
 <body>
-    <div id = "logo">
-        <img src = "myimage.png" id ="theImage" />
+    <div id = "winner">WINNER!</div>
+    <div id = "main">
+    <div id = "memberOne"></div>
+    <div id = "memberTwo"></div>
+    <div id = "memberThree"></div>
     </div>
-    <input id ="theInput" type="text" placeholder="Take a note..." />
+    <button id = "roll" onclick="random()">ROLL THE DICE</button>
+    <script>
+
+        function random(){
+         var k = document.getElementById("memberOne");
+         var l = document.getElementById("memberTwo");
+         var m = document.getElementById("memberThree");
+         var n = document.getElementById("winner");
+         k.style.backgroundColor = "green";
+             l.style.backgroundColor = "yellow";
+             m.style.backgroundColor = "red";
+        
+
+         k.innerHTML =  Math.floor((Math.random()*6)+1);
+         l.innerHTML =  Math.floor((Math.random()*6)+1);
+         m.innerHTML = Math.floor((Math.random()*6)+1);
+
+         if(k.innerHTML > l.innerHTML && k.innerHTML > m.innerHTML && l.innerHTML > m.innerHTML){
+             k.style.backgroundColor = "green";
+             l.style.backgroundColor = "yellow";
+             m.style.backgroundColor = "red";
+         }if(k.innerHTML > l.innerHTML && k.innerHTML > m.innerHTML && l.innerHTML < m.innerHTML){
+             k.style.backgroundColor = "green";
+             m.style.backgroundColor = "yellow";
+             l.style.backgroundColor = "red";
+         }if(l.innerHTML > k.innerHTML && l.innerHTML > m.innerHTML && k.innerHTML > m.innerHTML){
+             l.style.backgroundColor = "green";
+             k.style.backgroundColor = "yellow";
+             m.style.backgroundColor = "red";
+         }if(l.innerHTML > k.innerHTML && l.innerHTML > m.innerHTML && k.innerHTML < m.innerHTML){
+             l.style.backgroundColor = "green";
+             m.style.backgroundColor = "yellow";
+             k.style.backgroundColor = "red";
+         }if(m.innerHTML > k.innerHTML && m.innerHTML > k.innerHTML && k.innerHTML > l.innerHTML){
+             m.style.backgroundColor = "green";
+             k.style.backgroundColor = "yellow";
+             l.style.backgroundColor = "red";
+         }if(m.innerHTML > k.innerHTML && m.innerHTML > k.innerHTML && k.innerHTML < l.innerHTML){
+             m.style.backgroundColor = "green";
+             l.style.backgroundColor = "yellow";
+             k.style.backgroundColor = "red";
+         }
+
+         if(k.innerHTML === l.innerHTML){
+             k.style.backgroundColor = "blue";
+             l.style.backgroundColor = "blue";
+         }if(k.innerHTML === m.innerHTML){
+            k.style.backgroundColor = "blue";
+             m.style.backgroundColor = "blue";
+         }if(l.innerHTML === m.innerHTML){
+            m.style.backgroundColor = "blue";
+             l.style.backgroundColor = "blue";
+         }if(k.innerHTML === l.innerHTML && l.innerHTML === m.innerHTML){
+            k.style.backgroundColor = "blue";
+             l.style.backgroundColor = "blue";
+             m.style.backgroundColor = "blue";
+         }
+
+         if(k.innerHTML > l.innerHTML && k.innerHTML > m.innerHTML){
+            n.innerHTML = "Member-1"
+         } if(l.innerHTML > k.innerHTML && l.innerHTML > m.innerHTML){
+            n.innerHTML = "Member-2"
+         } if(m.innerHTML > l.innerHTML && m.innerHTML > k.innerHTML){
+            n.innerHTML = "Member-3"
+         }if(m.innerHTML === l.innerHTML && m.innerHTML === k.innerHTML){
+            n.innerHTML = "DRAW!"
+         }
+
+         
+        }
+
+    </script>
 </body>
-<script src = "../build/bundle.js"></script>
 </html>
