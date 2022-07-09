@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini JS Application</title>
+  </head>
+  <body>
+    <div id="buttons">
+    <button id="scope" onclick = "scopes()">Scope</button>
+    <button id="hoisting" onclick="hoists()">Hoisting</button>
+    <button id="constructor-functions" onclick="constr()">Constructor Functions</button>
+    <button id="prototype" onclick="proto()">Prototype</button>
+    </div>
+    <div id="bullet-points"></div>
+    <script>
+      var k = document.getElementById("bullet-points");
+      setInterval(function () {k.innerHTML = ""}, 5000);
+     var obj = {'scope':
+    ["Before ES6 (2015), JavaScript had only Global Scope and Function Scope.",
+     "ES6 introduced the keywords: let and const,that provide Block Scope in JavaScript.",
+     "Variables declared inside a block cannot be accessed from outside the block.",
+     "Variables declared with the var keyword can NOT have block scope.",
+     "Variables declared inside a block can be accessed from outside the block."]
+    }
+
+    localStorage.setItem('one',JSON.stringify(obj));
+
+function scopes(){
+var v = JSON.parse(localStorage.getItem('one'));
+for(var i = 0; i<5; i++){
+  var p = document.createElement("p");
+  p.textContent = v.scope[i];
+  k.append(p); 
+}
+}
+var objTwo = { 'data':
+["Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope.",
+"Hoisting helps keep the attendance sheet of a Javascript program.",
+"All hoisting cares about is what variables and functions are present in a program",
+"Variables defined with let and const are hoisted to the top of the block, but not initialized.",
+"JavaScript only hoists declarations, not initializations."]
+}
+
+localStorage.setItem('two',JSON.stringify(objTwo));
+
+function hoists(){
+var w = JSON.parse(localStorage.getItem('two'));
+for(var i = 0; i<5; i++){
+  var p = document.createElement("p");
+  p.textContent = w.data[i];
+  k.append(p); 
+}
+}
+
+var objThree = {'theData':
+["It is considered good practice to name constructor functions with an upper-case first letter.",
+"In a constructor function this does not have a value. It is a substitute for the new object.",
+"The value of this will become the new object when a new object is created.",
+"Sometimes we need to create many objects of the same type and so the way to do that is to use an object constructor function.",
+"Objects of the same type are created by calling the constructor function with the new keyword."
+]}
+
+localStorage.setItem('three',JSON.stringify(objThree));
+
+function constr(){
+var x = JSON.parse(localStorage.getItem('three'));
+for(var i = 0; i<5; i++){
+  var p = document.createElement("p");
+  p.textContent = x.theData[i];
+  k.append(p); 
+}
+}
+
+var objFour = {"datas":
+["All JavaScript objects inherit properties and methods from a prototype.",
+"JavaScript engine adds a prototype property inside a function",
+]}
+
+localStorage.setItem('four',JSON.stringify(objFour));
+
+function proto(){
+var y = JSON.parse(localStorage.getItem('four'));
+for(var i = 0; i<2; i++){
+  var p = document.createElement("p");
+  p.textContent = y.datas[i];
+  k.append(p); 
+}
+}
+    </script>
+  </body>
+</html>
